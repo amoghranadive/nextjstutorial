@@ -24,20 +24,61 @@ const BlogLinks = () => (
 )
 
 
+const ShowLink = ({show}) => (
+    <li>
+        <Link as={`/s/${show.id}`} href={`/show?id=${show.id}`}>
+        <a>{show.name}</a>
+        </Link>    
+        <style jsx>{`
+            li {
+                list-style: none;
+                margin: 5px 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: blue;
+                font-family: "Arial";
+            }
+
+            a:hover {
+                opacity: 0.6;
+            }
+            `}
+        </style>
+  </li>    
+)
+
 const Index = (props) => (
     <Layout>
         <h1>Batman TV Shows</h1>
         <ul>
             {
                 props.shows.map(({show}) => (
-                    <li key={show.id}>
-                        <Link as={`/s/${show.id}`} href={`/show?id=${show.id}`}>
-                        <a>{show.name}</a>
-                        </Link>
-                    </li>        
+                    <ShowLink key={show.id} show={show}/>    
                 ))
             }
         </ul>
+        <style jsx>{`
+                h1, a {
+                    font-family: "Arial";
+                }
+
+                ul {
+                    padding: 0;
+                }
+
+                li {
+                    list-style: none;
+                    margin: 5px 0;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: yellow;
+                }
+                `}
+        </style>
     </Layout>
 )
 
